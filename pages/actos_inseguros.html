@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Formulario Actos y Condiciones Inseguras</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+
+  <!-- Navbar simple -->
+  <nav class="bg-blue-800 text-white p-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-xl font-bold">SST Piedemonte</h1>
+      <a href="../index.html" class="hover:underline text-sm">Inicio</a>
+    </div>
+  </nav>
+
+  <!-- Contenido del formulario -->
+  <main class="container mx-auto p-6 flex-grow">
+    <h2 class="text-3xl font-semibold mb-6 text-center">Reporte de Actos y Condiciones Inseguras</h2>
+
+    <form action="#" method="POST" enctype="multipart/form-data" class="bg-white p-6 rounded shadow-md max-w-4xl mx-auto">
+
+      <!-- Fecha y hora -->
+      <div class="grid md:grid-cols-2 gap-6 mb-4">
+        <div>
+          <label for="fecha" class="block font-medium mb-1">Fecha</label>
+          <input type="date" id="fecha" name="fecha" required
+                 class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-600" />
+        </div>
+        <div>
+          <label for="hora" class="block font-medium mb-1">Hora</label>
+          <input type="time" id="hora" name="hora" required
+                 class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-600" />
+        </div>
+      </div>
+
+      <!-- Lugar -->
+      <label for="lugar" class="block font-medium mb-1">Lugar donde se observó</label>
+      <input type="text" id="lugar" name="lugar" required placeholder="Ejemplo: Planta de producción, Oficina 3"
+             class="w-full p-3 border border-gray-300 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-600" />
+
+      <!-- Descripción del acto inseguro -->
+      <label for="acto_inseguro" class="block font-medium mb-1">Descripción del Acto Inseguro</label>
+      <textarea id="acto_inseguro" name="acto_inseguro" rows="4" required placeholder="Describa el acto inseguro observado"
+                class="w-full p-3 border border-gray-300 rounded mb-4 resize-y focus:outline-none focus:ring-2 focus:ring-blue-600"></textarea>
+
+      <!-- Descripción de la condición insegura -->
+      <label for="condicion_insegura" class="block font-medium mb-1">Descripción de la Condición Insegura</label>
+      <textarea id="condicion_insegura" name="condicion_insegura" rows="4" required placeholder="Describa la condición insegura observada"
+                class="w-full p-3 border border-gray-300 rounded mb-4 resize-y focus:outline-none focus:ring-2 focus:ring-blue-600"></textarea>
+
+      <!-- Tipo de riesgo -->
+      <label for="tipo_riesgo" class="block font-medium mb-1">Tipo de Riesgo</label>
+      <select id="tipo_riesgo" name="tipo_riesgo" required
+              class="w-full p-3 border border-gray-300 rounded mb-6 focus:outline-none focus:ring-2 focus:ring-blue-600">
+        <option value="" disabled selected>Seleccione el tipo de riesgo</option>
+        <option value="fisico">Físico</option>
+        <option value="quimico">Químico</option>
+        <option value="biologico">Biológico</option>
+        <option value="ergonomico">Ergonómico</option>
+        <option value="psicosocial">Psicosocial</option>
+        <option value="otro">Otro</option>
+      </select>
+
+      <!-- Observaciones adicionales -->
+      <label for="observaciones" class="block font-medium mb-1">Observaciones adicionales</label>
+      <textarea id="observaciones" name="observaciones" rows="3" placeholder="Cualquier información adicional"
+                class="w-full p-3 border border-gray-300 rounded mb-4 resize-y focus:outline-none focus:ring-2 focus:ring-blue-600"></textarea>
+
+      <!-- Evidencia adjunta -->
+      <label for="evidencia" class="block font-medium mb-1">Adjuntar Evidencia (Foto, video, archivo)</label>
+      <input type="file" id="evidencia" name="evidencia" accept="image/*,video/*,application/pdf"
+             class="mb-6" />
+
+      <!-- Botón Enviar -->
+      <button type="submit" class="w-full bg-blue-700 hover:bg-blue-800 text-white py-3 rounded font-semibold transition">
+        Enviar Reporte
+      </button>
+
+    </form>
+  </main>
+
+  <!-- Footer simple -->
+  <footer class="bg-blue-800 text-white text-center p-4">
+    &copy; 2025 Alcaldía de Piendamó Tunía - SST Piedemonte
+  </footer>
+
+</body>
+</html>

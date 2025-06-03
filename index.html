@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inicio - SST Alcaldía Piedemonte</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+<!-- Navbar -->
+<nav class="bg-blue-800 text-white p-4">
+  <div class="container mx-auto flex flex-wrap items-center justify-between">
+    <h1 class="text-xl font-bold mb-2 sm:mb-0">SST Piedemonte</h1>
+    <button id="menu-toggle" class="sm:hidden text-white focus:outline-none">
+      ☰
+    </button>
+    <ul id="menu" class="hidden sm:flex flex-col sm:flex-row sm:space-x-4 w-full sm:w-auto text-sm mt-2 sm:mt-0">
+      <li><a href="index.html" class="block py-1 hover:underline">Inicio</a></li>
+      <li><a href="pages/accidente.html" class="block py-1 hover:underline">Accidente</a></li>
+      <li><a href="pages/acoso.html" class="block py-1 hover:underline">Acoso</a></li>
+      <li><a href="pages/ayuda.html" class="block py-1 hover:underline">Ayuda Psicológica</a></li>
+      <li><a href="pages/actos_inseguros.html" class="block py-1 hover:underline">Formulario MinTrabajo</a></li>
+      <li><a href="pages/pqrs.html" class="block py-1 hover:underline">PQRS</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Script para responsive menu -->
+<script>
+  document.getElementById("menu-toggle").onclick = function () {
+    const menu = document.getElementById("menu");
+    menu.classList.toggle("hidden");
+  };
+</script>
+
+<!-- Banner -->
+<section class="bg-cover bg-center h-64 sm:h-80 md:h-96 text-white flex items-center justify-center" style="background-image: url('https://images.unsplash.com/photo-1615399413711-9ac282ab79f0');">
+  <div class="bg-black bg-opacity-50 p-4 sm:p-6 rounded text-center">
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold">Sistema de Seguridad y Salud en el Trabajo</h2>
+    <p class="mt-2 text-sm sm:text-base">Alcaldía de Piendamó Tunía</p>
+  </div>
+</section>
+
+
+ <!-- Botones principales con íconos -->
+<section class="container mx-auto my-8 grid md:grid-cols-3 gap-6 text-center px-4">
+  <a href="pages/accidente.html" class="bg-gray-100 text-gray-800 p-5 rounded-xl shadow hover:bg-gray-200 transition">
+    <div class="flex flex-col items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-2 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636L5.636 18.364M5.636 5.636l12.728 12.728" />
+      </svg>
+      <span class="font-semibold">Reportar Accidente</span>
+    </div>
+  </a>
+
+  <a href="pages/acoso.html" class="bg-gray-100 text-gray-800 p-5 rounded-xl shadow hover:bg-gray-200 transition">
+    <div class="flex flex-col items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-2 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 18a6 6 0 110-12 6 6 0 010 12z" />
+      </svg>
+      <span class="font-semibold">Reportar Acoso</span>
+    </div>
+  </a>
+
+  <a href="pages/ayuda.html" class="bg-gray-100 text-gray-800 p-5 rounded-xl shadow hover:bg-gray-200 transition">
+    <div class="flex flex-col items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-2 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 14h.01M16 10h.01M12 12h0m0 0v0m0 0v0m0 0v0m0 0v0m0 0v0m0 0v0m0 0v0m0 0v0m0 0v0m0 0v0m0 0v0m0 0v0" />
+      </svg>
+      <span class="font-semibold">Ayuda Psicológica</span>
+    </div>
+  </a>
+
+  <a href="pages/actos_inseguros.html" class="bg-gray-100 text-gray-800 p-5 rounded-xl shadow hover:bg-gray-200 transition">
+    <div class="flex flex-col items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-2 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 .5304-.2107 1.0391-.5858 1.4142C11.0391 12.7893 10.5304 13 10 13s-1.0391-.2107-1.4142-.5858C8.2107 12.0391 8 11.5304 8 11s.2107-1.0391.5858-1.4142C9.0391 9.2107 9.5304 9 10 9s1.0391.2107 1.4142.5858C11.7893 9.9609 12 10.4696 12 11z" />
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 20h14M12 4v4m0 0H8m4 0h4" />
+      </svg>
+      <span class="font-semibold text-sm">Formulario Condiciones Inseguras</span>
+    </div>
+  </a>
+
+  <a href="pages/pqrs.html" class="bg-gray-100 text-gray-800 p-5 rounded-xl shadow hover:bg-gray-200 transition">
+    <div class="flex flex-col items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-2 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v10l-4-4H5a2 2 0 01-2-2V4a2 2 0 012-2h10a2 2 0 012 2v4z" />
+      </svg>
+      <span class="font-semibold">PQRS</span>
+    </div>
+  </a>
+</section>
+
+  <!-- Planes Institucionales de SST -->
+<section class="container mx-auto my-12 px-4">
+  <h3 class="text-2xl font-bold text-center mb-8">📘 Planes Institucionales de Seguridad y Salud en el Trabajo</h3>
+  <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+    <!-- Plan de Prevención de Riesgos -->
+    <div class="bg-white rounded-xl shadow p-5">
+      <h4 class="text-lg font-bold mb-1">Plan de Prevención de Riesgos</h4>
+      <p class="text-sm text-gray-500 mb-2">Resolución 0312 de 2019</p>
+      <p class="text-sm text-gray-700">Estrategia para identificar, controlar y prevenir los riesgos laborales en el entorno municipal.</p>
+      <div class="mt-3 flex justify-between">
+        <a href="docs/prevencion_riesgos.html" class="text-blue-600 hover:underline">Leer</a>
+        <a href="docs/prevencion_riesgos.pdf" class="text-blue-600 hover:underline" download>Descargar</a>
+      </div>
+    </div>
+
+    <!-- Plan de Emergencias -->
+    <div class="bg-white rounded-xl shadow p-5">
+      <h4 class="text-lg font-bold mb-1">Plan de Emergencias</h4>
+      <p class="text-sm text-gray-500 mb-2">Decreto 1072 de 2015</p>
+      <p class="text-sm text-gray-700">Protocolo institucional ante incendios, temblores, evacuación y primeros auxilios.</p>
+      <div class="mt-3 flex justify-between">
+        <a href="docs/emergencias.html" class="text-blue-600 hover:underline">Leer</a>
+        <a href="docs/emergencias.pdf" class="text-blue-600 hover:underline" download>Descargar</a>
+      </div>
+    </div>
+
+    <!-- Plan de Bienestar Laboral -->
+    <div class="bg-white rounded-xl shadow p-5">
+      <h4 class="text-lg font-bold mb-1">Plan de Bienestar Laboral</h4>
+      <p class="text-sm text-gray-500 mb-2">Circular 005 de 2017</p>
+      <p class="text-sm text-gray-700">Promoción del entorno saludable mediante actividades recreativas, salud mental y desarrollo profesional.</p>
+      <div class="mt-3 flex justify-between">
+        <a href="docs/bienestar_laboral.html" class="text-blue-600 hover:underline">Leer</a>
+        <a href="docs/bienestar_laboral.pdf" class="text-blue-600 hover:underline" download>Descargar</a>
+      </div>
+    </div>
+
+    <!-- Plan de Capacitación SST -->
+    <div class="bg-white rounded-xl shadow p-5">
+      <h4 class="text-lg font-bold mb-1">Plan de Capacitación en SST</h4>
+      <p class="text-sm text-gray-500 mb-2">Resolución 4927 de 2016</p>
+      <p class="text-sm text-gray-700">Formación continua al personal sobre riesgos, primeros auxilios y cultura de prevención en el trabajo.</p>
+      <div class="mt-3 flex justify-between">
+        <a href="docs/capacitacion_sst.html" class="text-blue-600 hover:underline">Leer</a>
+        <a href="docs/capacitacion_sst.pdf" class="text-blue-600 hover:underline" download>Descargar</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+  <!-- Noticias informativas -->
+  <section class="container mx-auto my-10">
+    <h3 class="text-xl font-semibold mb-4">📰 Noticias Informativas</h3>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-white p-4 rounded shadow">
+        <h4 class="font-bold text-lg">Jornada de Bienestar en la Alcaldía</h4>
+        <p class="text-sm text-gray-600">El pasado viernes se realizó una jornada de bienestar laboral con actividades físicas.</p>
+        <span class="text-xs text-gray-400">Publicado: 2 Junio 2025</span>
+      </div>
+      <div class="bg-white p-4 rounded shadow">
+        <h4 class="font-bold text-lg">Capacitación sobre SST</h4>
+        <p class="text-sm text-gray-600">Más de 100 funcionarios participaron en la capacitación en prevención de riesgos laborales.</p>
+        <span class="text-xs text-gray-400">Publicado: 25 Mayo 2025</span>
+      </div>
+      <div class="bg-white p-4 rounded shadow">
+        <h4 class="font-bold text-lg">Simulacro de evacuación</h4>
+        <p class="text-sm text-gray-600">Realizamos un simulacro de evacuación exitoso en todas las sedes administrativas.</p>
+        <span class="text-xs text-gray-400">Publicado: 15 Mayo 2025</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección Quiénes Somos -->
+<section class="container mx-auto py-12 px-6 bg-white rounded shadow-md max-w-5xl mt-12">
+  <h2 class="text-3xl font-bold text-center mb-8">Quiénes Somos</h2>
+
+  <div class="flex flex-col md:flex-row justify-center items-center gap-10">
+
+    <!-- Francia Vels -->
+    <div class="text-center max-w-xs">
+      <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Francia Vels" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover shadow-lg" />
+      <h3 class="text-xl font-semibold">Francia Vels</h3>
+      <p class="text-gray-600 mt-1">Talento Humano</p>
+    </div>
+
+    <!-- Camilo Hurtado -->
+    <div class="text-center max-w-xs">
+      <img src="https://randomuser.me/api/portraits/men/46.jpg" alt="Camilo Hurtado" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover shadow-lg" />
+      <h3 class="text-xl font-semibold">Camilo Hurtado</h3>
+      <p class="text-gray-600 mt-1">Profesional en SST</p>
+    </div>
+
+  </div>
+</section>
+
+  <footer class="bg-blue-800 text-white text-center py-4 mt-10">
+    © 2025 Alcaldía de Piendamó Tunía – Sistema SST
+  </footer>
+
+</body>
+</html>
+

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reporte de Accidente SST</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+
+  <!-- Navbar simple -->
+  <nav class="bg-blue-800 text-white p-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-xl font-bold">SST Piendamó Tunía</h1>
+      <a href="../index.html" class="hover:underline text-sm">Inicio</a>
+    </div>
+  </nav>
+
+  <!-- Contenido del formulario -->
+  <main class="container mx-auto p-6 flex-grow">
+    <h2 class="text-3xl font-semibold mb-6 text-center">Reporte de Accidente</h2>
+
+    <form action="#" method="POST" enctype="multipart/form-data" class="bg-white p-6 rounded shadow-md max-w-3xl mx-auto">
+
+      <!-- Nombre Completo -->
+      <label for="nombre" class="block font-medium mb-1">Nombre Completo</label>
+      <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre completo" 
+             class="w-full p-3 border border-gray-300 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-600" />
+
+      <!-- Documento Identidad -->
+      <label for="documento" class="block font-medium mb-1">Documento de Identidad</label>
+      <input type="text" id="documento" name="documento" required placeholder="Número de documento" 
+             class="w-full p-3 border border-gray-300 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-600" />
+
+      <!-- Fecha del Accidente -->
+      <label for="fecha" class="block font-medium mb-1">Fecha del Accidente</label>
+      <input type="date" id="fecha" name="fecha" required 
+             class="w-full p-3 border border-gray-300 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-600" />
+
+      <!-- Hora del Accidente -->
+      <label for="hora" class="block font-medium mb-1">Hora del Accidente</label>
+      <input type="time" id="hora" name="hora" required 
+             class="w-full p-3 border border-gray-300 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-600" />
+
+      <!-- Lugar -->
+      <label for="lugar" class="block font-medium mb-1">Lugar del Accidente</label>
+      <input type="text" id="lugar" name="lugar" required placeholder="Lugar donde ocurrió el accidente" 
+             class="w-full p-3 border border-gray-300 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-600" />
+
+      <!-- Descripción -->
+      <label for="descripcion" class="block font-medium mb-1">Descripción del Accidente</label>
+      <textarea id="descripcion" name="descripcion" rows="4" required placeholder="Describe lo sucedido" 
+                class="w-full p-3 border border-gray-300 rounded mb-4 resize-y focus:outline-none focus:ring-2 focus:ring-blue-600"></textarea>
+
+      <!-- Evidencia -->
+      <label for="evidencia" class="block font-medium mb-1">Adjuntar Evidencia (foto, video, archivo)</label>
+      <input type="file" id="evidencia" name="evidencia" accept="image/*,video/*,application/pdf" 
+             class="mb-6" />
+
+      <!-- Botón Enviar -->
+      <button type="submit" class="w-full bg-blue-700 hover:bg-blue-800 text-white py-3 rounded font-semibold transition">
+        Enviar Reporte
+      </button>
+    </form>
+  </main>
+
+  <!-- Footer simple -->
+  <footer class="bg-blue-800 text-white text-center p-4">
+    &copy; 2025 Alcaldía de Piendamó Tunía - SST 
+  </footer>
+
+</body>
+</html>
