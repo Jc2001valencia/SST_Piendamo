@@ -38,62 +38,63 @@
 
 
 <!-- Banner -->
-<section class="bg-cover bg-center h-64 sm:h-80 md:h-96 text-white flex items-center justify-center" style="background-image: url('https://images.unsplash.com/photo-1615399413711-9ac282ab79f0');">
-  <div class="bg-black bg-opacity-50 p-4 sm:p-6 rounded text-center">
+<section class="relative h-64 sm:h-80 md:h-96">
+  <!-- Imagen de fondo -->
+  <img src="assets/img/foto-seguridad-salud-en-el-trabajo-especializacion.png" 
+       alt="Banner Seguridad y Salud" 
+       class="absolute inset-0 w-full h-full object-cover" />
+
+  <!-- Capa oscura para legibilidad -->
+  <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+
+  <!-- Contenido del banner -->
+  <div class="relative z-10 flex flex-col items-center justify-center h-full text-white text-center p-4 sm:p-6">
     <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold">Sistema de Seguridad y Salud en el Trabajo</h2>
     <p class="mt-2 text-sm sm:text-base">Alcaldía de Piendamó Tunía</p>
   </div>
 </section>
 
 
- <!-- Botones principales con íconos -->
+
+ <!-- Botones principales con imágenes -->
 <section class="container mx-auto my-8 grid md:grid-cols-3 gap-6 text-center px-4">
+  
   <a href="pages/accidente.html" class="bg-gray-100 text-gray-800 p-5 rounded-xl shadow hover:bg-gray-200 transition">
     <div class="flex flex-col items-center">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-2 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636L5.636 18.364M5.636 5.636l12.728 12.728" />
-      </svg>
+      <img src="/assets/icon/lesiones.png" alt="Accidente" class="h-14 w-14 mb-2" />
       <span class="font-semibold">Reportar Accidente</span>
     </div>
   </a>
 
   <a href="pages/acoso.html" class="bg-gray-100 text-gray-800 p-5 rounded-xl shadow hover:bg-gray-200 transition">
     <div class="flex flex-col items-center">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-2 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 18a6 6 0 110-12 6 6 0 010 12z" />
-      </svg>
+      <img src="/assets/icon//acoso-sexual.png" alt="Acoso" class="h-14 w-14 mb-2" />
       <span class="font-semibold">Reportar Acoso</span>
     </div>
   </a>
 
   <a href="pages/ayuda.html" class="bg-gray-100 text-gray-800 p-5 rounded-xl shadow hover:bg-gray-200 transition">
     <div class="flex flex-col items-center">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-2 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 14h.01M16 10h.01M12 12h0m0 0v0m0 0v0m0 0v0m0 0v0m0 0v0m0 0v0m0 0v0m0 0v0m0 0v0m0 0v0m0 0v0m0 0v0" />
-      </svg>
+      <img src="/assets/icon/psicologia.png" alt="Ayuda Psicológica" class="h-14 w-14 mb-2" />
       <span class="font-semibold">Ayuda Psicológica</span>
     </div>
   </a>
 
   <a href="pages/actos_inseguros.html" class="bg-gray-100 text-gray-800 p-5 rounded-xl shadow hover:bg-gray-200 transition">
     <div class="flex flex-col items-center">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-2 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 .5304-.2107 1.0391-.5858 1.4142C11.0391 12.7893 10.5304 13 10 13s-1.0391-.2107-1.4142-.5858C8.2107 12.0391 8 11.5304 8 11s.2107-1.0391.5858-1.4142C9.0391 9.2107 9.5304 9 10 9s1.0391.2107 1.4142.5858C11.7893 9.9609 12 10.4696 12 11z" />
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 20h14M12 4v4m0 0H8m4 0h4" />
-      </svg>
+      <img src="/assets/icon/formulario-de-firma.png" alt="Condiciones Inseguras" class="h-14 w-14 mb-2" />
       <span class="font-semibold text-sm">Formulario Condiciones Inseguras</span>
     </div>
   </a>
 
   <a href="pages/pqrs.html" class="bg-gray-100 text-gray-800 p-5 rounded-xl shadow hover:bg-gray-200 transition">
     <div class="flex flex-col items-center">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-2 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v10l-4-4H5a2 2 0 01-2-2V4a2 2 0 012-2h10a2 2 0 012 2v4z" />
-      </svg>
+      <img src="/assets/icon/comentario-negativo.png" alt="PQRS" class="h-14 w-14 mb-2" />
       <span class="font-semibold">PQRS</span>
     </div>
   </a>
 </section>
+
 
   <!-- Planes Institucionales de SST -->
 <section class="container mx-auto my-12 px-4">
@@ -170,29 +171,7 @@
     </div>
   </section>
 
-  <!-- Sección Quiénes Somos -->
-<section class="container mx-auto py-12 px-6 bg-white rounded shadow-md max-w-5xl mt-12">
-  <h2 class="text-3xl font-bold text-center mb-8">Quiénes Somos</h2>
-
-  <div class="flex flex-col md:flex-row justify-center items-center gap-10">
-
-    <!-- Francia Vels -->
-    <div class="text-center max-w-xs">
-      <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Francia Vels" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover shadow-lg" />
-      <h3 class="text-xl font-semibold">Francia Vels</h3>
-      <p class="text-gray-600 mt-1">Talento Humano</p>
-    </div>
-
-    <!-- Camilo Hurtado -->
-    <div class="text-center max-w-xs">
-      <img src="https://randomuser.me/api/portraits/men/46.jpg" alt="Camilo Hurtado" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover shadow-lg" />
-      <h3 class="text-xl font-semibold">Camilo Hurtado</h3>
-      <p class="text-gray-600 mt-1">Profesional en SST</p>
-    </div>
-
-  </div>
-</section>
-
+  
   <footer class="bg-blue-800 text-white text-center py-4 mt-10">
     © 2025 Alcaldía de Piendamó Tunía – Sistema SST
   </footer>
