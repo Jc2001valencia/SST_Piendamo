@@ -17,107 +17,79 @@
   </nav>
 
   <!-- Contenido del formulario -->
-  <main class="container mx-auto p-6 flex-grow">
-    <h2 class="text-3xl font-semibold mb-6 text-center">Reporte de Accidente</h2>
+ <main class="container mx-auto p-6 flex-grow">
+  <h2 class="text-3xl font-semibold mb-6 text-center">Reporte de Accidente</h2>
 
-   <form id="reporteForm" action="#" method="POST" enctype="multipart/form-data" class="bg-white p-6 rounded shadow-md max-w-3xl mx-auto">
+  <form 
+    action="https://script.google.com/macros/s/AKfycbxEs2i5yQuRMCjZCMDeUDcy0Zg5KfpnTT6jvLJA1FmY6YOlgVLmafdfRkGi5oxIM__bSw/exec" 
+    method="post" 
+    class="bg-white p-6 rounded shadow-md max-w-3xl mx-auto"
+    target="hidden_iframe"
+  >
+    <!-- Nombre Completo -->
+    <label for="nombre" class="block font-medium mb-1">Nombre Completo</label>
+    <input type="text" id="nombre" name="Nombre Completo" required placeholder="Tu nombre completo" 
+           class="w-full p-3 border border-gray-300 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-600" />
 
+    <!-- Documento Identidad -->
+    <label for="documento" class="block font-medium mb-1">Documento de Identidad</label>
+    <input type="text" id="documento" name="Documento de Identida" required placeholder="Número de documento" 
+          class="w-full p-3 border border-gray-300 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-600" />
 
-      <!-- Nombre Completo -->
-      <label for="nombre" class="block font-medium mb-1">Nombre Completo</label>
-      <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre completo" 
-             class="w-full p-3 border border-gray-300 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-600" />
+    <!-- Fecha del Accidente -->
+    <label for="fecha" class="block font-medium mb-1">Fecha del Accidente</label>
+    <input type="date" id="fecha" name="Fecha del Accidente" required 
+           class="w-full p-3 border border-gray-300 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-600" />
 
-      <!-- Documento Identidad -->
-      <label for="documento" class="block font-medium mb-1">Documento de Identidad</label>
-      <input type="text" id="documento" name="documento" required placeholder="Número de documento" 
-             class="w-full p-3 border border-gray-300 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-600" />
+    <!-- Hora del Accidente -->
+    <label for="hora" class="block font-medium mb-1">Hora del Accidente</label>
+    <input type="time" id="hora" name="Hora del Accidente" required 
+           class="w-full p-3 border border-gray-300 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-600" />
 
-      <!-- Fecha del Accidente -->
-      <label for="fecha" class="block font-medium mb-1">Fecha del Accidente</label>
-      <input type="date" id="fecha" name="fecha" required 
-             class="w-full p-3 border border-gray-300 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-600" />
+    <!-- Lugar -->
+    <label for="lugar" class="block font-medium mb-1">Lugar del Accidente</label>
+    <input type="text" id="lugar" name="Lugar del Accidente" required placeholder="Lugar donde ocurrió el accidente" 
+           class="w-full p-3 border border-gray-300 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-600" />
 
-      <!-- Hora del Accidente -->
-      <label for="hora" class="block font-medium mb-1">Hora del Accidente</label>
-      <input type="time" id="hora" name="hora" required 
-             class="w-full p-3 border border-gray-300 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-600" />
+    <!-- Descripción -->
+    <label for="descripcion" class="block font-medium mb-1">Descripción del Accidente</label>
+    <textarea id="descripcion" name="Descripción del Accidente" rows="4" required placeholder="Describe lo sucedido" 
+              class="w-full p-3 border border-gray-300 rounded mb-4 resize-y focus:outline-none focus:ring-2 focus:ring-blue-600"></textarea>
 
-      <!-- Lugar -->
-      <label for="lugar" class="block font-medium mb-1">Lugar del Accidente</label>
-      <input type="text" id="lugar" name="lugar" required placeholder="Lugar donde ocurrió el accidente" 
-             class="w-full p-3 border border-gray-300 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-600" />
+    <!-- Botón Enviar -->
+    <button type="submit" class="w-full bg-blue-700 hover:bg-blue-800 text-white py-3 rounded font-semibold transition">
+      Enviar Reporte
+    </button>
+  </form>
 
-      <!-- Descripción -->
-      <label for="descripcion" class="block font-medium mb-1">Descripción del Accidente</label>
-      <textarea id="descripcion" name="descripcion" rows="4" required placeholder="Describe lo sucedido" 
-                class="w-full p-3 border border-gray-300 rounded mb-4 resize-y focus:outline-none focus:ring-2 focus:ring-blue-600"></textarea>
+</main>
+  <!-- iframe oculto para evitar redirección al enviar -->
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
-      <!-- Evidencia -->
-      <label for="evidencia" class="block font-medium mb-1">Adjuntar Evidencia (foto, video, archivo)</label>
-      <input type="file" id="evidencia" name="evidencia" accept="image/*,video/*,application/pdf" 
-             class="mb-6" />
-
-      <!-- Botón Enviar -->
-      <button type="submit" class="w-full bg-blue-700 hover:bg-blue-800 text-white py-3 rounded font-semibold transition">
-        Enviar Reporte
-      </button>
-    </form>
-  </main>
-
-  <!-- Footer simple -->
   <footer class="bg-blue-800 text-white text-center p-4">
     &copy; 2025 Alcaldía de Piendamó Tunía - SST 
   </footer>
 
+
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("reporteForm");
+    const form = document.querySelector('form');
+    const hiddenIframe = document.getElementById('hidden_iframe');
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const formData = new FormData(form);
-
-    // Convertir archivo a base64
-    const file = formData.get("evidencia");
-    const reader = new FileReader();
-
-    reader.onload = async function () {
-      const base64File = reader.result.split(",")[1]; // quitar header data:
-
-      const data = {
-        nombre: formData.get("nombre"),
-        documento: formData.get("documento"),
-        fecha: formData.get("fecha"),
-        hora: formData.get("hora"),
-        lugar: formData.get("lugar"),
-        descripcion: formData.get("descripcion"),
-        filename: file.name,
-        mimeType: file.type,
-        base64: base64File
-      };
-
-      try {
-        const res = await fetch("https://script.google.com/macros/s/AKfycbxEs2i5yQuRMCjZCMDeUDcy0Zg5KfpnTT6jvLJA1FmY6YOlgVLmafdfRkGi5oxIM__bSw/exec", {
-          method: "POST",
-          body: JSON.stringify(data),
-          headers: {
-            "Content-Type": "application/json"
-          }
-        });
-        const text = await res.text();
-        alert("Reporte enviado correctamente: " + text);
-        form.reset();
-      } catch (error) {
-        alert("Error al enviar: " + error.message);
-      }
+    hiddenIframe.onload = function() {
+        if (hiddenIframe.contentDocument.body.innerText === "¡Reporte de accidente enviado con éxito!") {
+            alert("¡Reporte enviado correctamente!");
+            form.reset(); // Limpia el formulario después del éxito
+        } else {
+            // Si el script devuelve algo diferente, podría ser un error o una respuesta inesperada
+            alert("Hubo un problema al enviar el reporte. Por favor, inténtalo de nuevo.");
+            console.error("Respuesta del script:", hiddenIframe.contentDocument.body.innerText);
+        }
     };
+  </script>
+  <!-- Footer simple -->
 
-    reader.readAsDataURL(file); // leer como Base64
-  });
-});
-</script>
+
+  
 
 </body>
 </html>
