@@ -11,10 +11,19 @@
 <!-- Navbar -->
 <nav class="bg-blue-800 text-white p-4">
   <div class="container mx-auto flex flex-wrap items-center justify-between">
-    <h1 class="text-xl font-bold mb-2 sm:mb-0">SST Piedemonte</h1>
-    <button id="menu-toggle" class="sm:hidden text-white focus:outline-none">
+    
+    <!-- Logo + Título -->
+    <div class="flex items-center space-x-3 mb-2 sm:mb-0">
+      <img src="ruta-del-logo.png" alt="Logo Alcaldía" class="h-10 w-auto" />
+      <h1 class="text-xl font-bold">SST Piendamó</h1>
+    </div>
+
+    <!-- Botón para menú en móviles -->
+    <button id="menu-toggle" class="sm:hidden text-white focus:outline-none text-2xl">
       ☰
     </button>
+
+    <!-- Menú -->
     <ul id="menu" class="hidden sm:flex flex-col sm:flex-row sm:space-x-4 w-full sm:w-auto text-sm mt-2 sm:mt-0">
       <li><a href="index.html" class="block py-1 hover:underline">Inicio</a></li>
       <li><a href="pages/accidente.html" class="block py-1 hover:underline">Accidente</a></li>
@@ -26,13 +35,7 @@
   </div>
 </nav>
 
-<!-- Script para responsive menu -->
-<script>
-  document.getElementById("menu-toggle").onclick = function () {
-    const menu = document.getElementById("menu");
-    menu.classList.toggle("hidden");
-  };
-</script>
+
 
 <!-- Banner -->
 <section class="bg-cover bg-center h-64 sm:h-80 md:h-96 text-white flex items-center justify-center" style="background-image: url('https://images.unsplash.com/photo-1615399413711-9ac282ab79f0');">
@@ -194,6 +197,8 @@
     © 2025 Alcaldía de Piendamó Tunía – Sistema SST
   </footer>
 
+
+  <script src="js/main.js"></script>
 </body>
 </html>
 
