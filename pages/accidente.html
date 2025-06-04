@@ -20,7 +20,8 @@
   <main class="container mx-auto p-6 flex-grow">
     <h2 class="text-3xl font-semibold mb-6 text-center">Reporte de Accidente</h2>
 
-    <form action="#" method="POST" enctype="multipart/form-data" class="bg-white p-6 rounded shadow-md max-w-3xl mx-auto">
+   <form id="reporteForm" action="#" method="POST" enctype="multipart/form-data" class="bg-white p-6 rounded shadow-md max-w-3xl mx-auto">
+
 
       <!-- Nombre Completo -->
       <label for="nombre" class="block font-medium mb-1">Nombre Completo</label>
@@ -69,6 +70,54 @@
     &copy; 2025 Alcaldía de Piendamó Tunía - SST 
   </footer>
 
-  <script src="../js/accidente.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("reporteForm");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+
+    // Convertir archivo a base64
+    const file = formData.get("evidencia");
+    const reader = new FileReader();
+
+    reader.onload = async function () {
+      const base64File = reader.result.split(",")[1]; // quitar header data:
+
+      const data = {
+        nombre: formData.get("nombre"),
+        documento: formData.get("documento"),
+        fecha: formData.get("fecha"),
+        hora: formData.get("hora"),
+        lugar: formData.get("lugar"),
+        descripcion: formData.get("descripcion"),
+        filename: file.name,
+        mimeType: file.type,
+        base64: base64File
+      };
+
+      try {
+        const res = await fetch("https://script.google.com/macros/s/AKfycbxEs2i5yQuRMCjZCMDeUDcy0Zg5KfpnTT6jvLJA1FmY6YOlgVLmafdfRkGi5oxIM__bSw/exec", {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        });
+        const text = await res.text();
+        alert("Reporte enviado correctamente: " + text);
+        form.reset();
+      } catch (error) {
+        alert("Error al enviar: " + error.message);
+      }
+    };
+
+    reader.readAsDataURL(file); // leer como Base64
+  });
+});
+</script>
+
 </body>
 </html>
