@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reporte de Accidente SST</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100 min-h-screen flex flex-col">
-
-  <!-- Navbar simple -->
+  <!-- Navbar -->
   <nav class="bg-blue-800 text-white p-4">
     <div class="container mx-auto flex justify-between items-center">
       <h1 class="text-xl font-bold">SST Piendamó Tunía</h1>
@@ -16,80 +16,125 @@
     </div>
   </nav>
 
-  <!-- Contenido del formulario -->
- <main class="container mx-auto p-6 flex-grow">
+  <!-- Formulario -->
+  <main class="container mx-auto p-6 flex-grow">
   <h2 class="text-3xl font-semibold mb-6 text-center">Reporte de Accidente</h2>
-
+  
   <form 
-    action="https://script.google.com/macros/s/AKfycbxEs2i5yQuRMCjZCMDeUDcy0Zg5KfpnTT6jvLJA1FmY6YOlgVLmafdfRkGi5oxIM__bSw/exec" 
-    method="post" 
+    id="reporteForm"
+    action="https://formsubmit.co/alacaldiapiendamotuniasst@gmail.com" 
+    method="POST"
     class="bg-white p-6 rounded shadow-md max-w-3xl mx-auto"
-    target="hidden_iframe"
   >
+    <!-- Configuración de FormSubmit -->
+    <input type="hidden" name="_subject" value="Nuevo Reporte de Accidente SST">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_captcha" value="false">
+    
     <!-- Nombre Completo -->
     <label for="nombre" class="block font-medium mb-1">Nombre Completo</label>
-    <input type="text" id="nombre" name="Nombre Completo" required placeholder="Tu nombre completo" 
-           class="w-full p-3 border border-gray-300 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-600" />
+    <input type="text" id="nombre" name="Nombre" required 
+           class="w-full p-3 border border-gray-300 rounded mb-4">
 
-    <!-- Documento Identidad -->
+    <!-- Documento de Identidad -->
     <label for="documento" class="block font-medium mb-1">Documento de Identidad</label>
-    <input type="text" id="documento" name="Documento de Identida" required placeholder="Número de documento" 
-          class="w-full p-3 border border-gray-300 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-600" />
+    <input type="text" id="documento" name="Documento" required
+           class="w-full p-3 border border-gray-300 rounded mb-4">
 
     <!-- Fecha del Accidente -->
     <label for="fecha" class="block font-medium mb-1">Fecha del Accidente</label>
-    <input type="date" id="fecha" name="Fecha del Accidente" required 
-           class="w-full p-3 border border-gray-300 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-600" />
+    <input type="date" id="fecha" name="Fecha" required
+           class="w-full p-3 border border-gray-300 rounded mb-4">
 
     <!-- Hora del Accidente -->
     <label for="hora" class="block font-medium mb-1">Hora del Accidente</label>
-    <input type="time" id="hora" name="Hora del Accidente" required 
-           class="w-full p-3 border border-gray-300 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-600" />
+    <input type="time" id="hora" name="Hora" required
+           class="w-full p-3 border border-gray-300 rounded mb-4">
 
-    <!-- Lugar -->
+    <!-- Lugar del Accidente -->
     <label for="lugar" class="block font-medium mb-1">Lugar del Accidente</label>
-    <input type="text" id="lugar" name="Lugar del Accidente" required placeholder="Lugar donde ocurrió el accidente" 
-           class="w-full p-3 border border-gray-300 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-600" />
+    <input type="text" id="lugar" name="Lugar" required
+           class="w-full p-3 border border-gray-300 rounded mb-4">
 
-    <!-- Descripción -->
+    <!-- Descripción del Accidente -->
     <label for="descripcion" class="block font-medium mb-1">Descripción del Accidente</label>
-    <textarea id="descripcion" name="Descripción del Accidente" rows="4" required placeholder="Describe lo sucedido" 
-              class="w-full p-3 border border-gray-300 rounded mb-4 resize-y focus:outline-none focus:ring-2 focus:ring-blue-600"></textarea>
+    <textarea id="descripcion" name="Descripción" required
+              class="w-full p-3 border border-gray-300 rounded mb-4"></textarea>
 
-    <!-- Botón Enviar -->
-    <button type="submit" class="w-full bg-blue-700 hover:bg-blue-800 text-white py-3 rounded font-semibold transition">
+    <button type="submit" class="w-full bg-blue-700 hover:bg-blue-800 text-white py-3 rounded font-semibold">
       Enviar Reporte
     </button>
   </form>
-
 </main>
-  <!-- iframe oculto para evitar redirección al enviar -->
-<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
+  <!-- Footer -->
   <footer class="bg-blue-800 text-white text-center p-4">
     &copy; 2025 Alcaldía de Piendamó Tunía - SST 
   </footer>
 
-
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-    const form = document.querySelector('form');
-    const hiddenIframe = document.getElementById('hidden_iframe');
-
-    hiddenIframe.onload = function() {
-        if (hiddenIframe.contentDocument.body.innerText === "¡Reporte de accidente enviado con éxito!") {
-            alert("¡Reporte enviado correctamente!");
-            form.reset(); // Limpia el formulario después del éxito
-        } else {
-            // Si el script devuelve algo diferente, podría ser un error o una respuesta inesperada
-            alert("Hubo un problema al enviar el reporte. Por favor, inténtalo de nuevo.");
-            console.error("Respuesta del script:", hiddenIframe.contentDocument.body.innerText);
-        }
-    };
-  </script>
-  <!-- Footer simple -->
-
-
+document.getElementById('reporteForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
   
+  const submitBtn = this.querySelector('button[type="submit"]');
+  const originalText = submitBtn.textContent;
+  
+  // Mostrar loader en el botón
+  submitBtn.innerHTML = `
+    <svg class="animate-spin -ml-1 mr-2 h-5 w-5 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+      <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+    </svg>
+    Enviando...
+  `;
+  submitBtn.disabled = true;
 
+  try {
+    const response = await fetch(this.action, {
+      method: 'POST',
+      body: new FormData(this)
+    });
+
+    if (response.ok) {
+      await Swal.fire({
+        title: '¡Éxito!',
+        text: 'El reporte se ha enviado correctamente',
+        icon: 'success',
+        iconColor: '#10B981', // verde-500
+        confirmButtonColor: '#3B82F6', // azul-500
+        confirmButtonText: 'Aceptar',
+        background: '#FFFFFF',
+        backdrop: `
+          rgba(0,0,0,0.4)
+          url("/images/checkmark.gif")
+          center top
+          no-repeat
+        `,
+        timer: 3000,
+        timerProgressBar: true,
+        willClose: () => {
+          this.reset();
+        }
+      });
+    } else {
+      throw new Error('Error en el servidor');
+    }
+  } catch (error) {
+    await Swal.fire({
+      title: 'Error',
+      text: 'No se pudo enviar el reporte: ' + error.message,
+      icon: 'error',
+      iconColor: '#EF4444', // rojo-500
+      confirmButtonColor: '#3B82F6', // azul-500
+      confirmButtonText: 'Entendido',
+      background: '#FEF2F2' // rojo-50
+    });
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = originalText;
+  }
+});
+</script>
 </body>
 </html>
