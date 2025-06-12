@@ -211,27 +211,81 @@
 
 
 
-  <!-- Noticias informativas -->
-  <section class="container mx-auto my-10">
-    <h3 class="text-xl font-semibold mb-4">📰 Noticias Informativas</h3>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="bg-white p-4 rounded shadow">
-        <h4 class="font-bold text-lg">Jornada de Bienestar en la Alcaldía</h4>
-        <p class="text-sm text-gray-600">El pasado viernes se realizó una jornada de bienestar laboral con actividades físicas.</p>
-        <span class="text-xs text-gray-400">Publicado: 2 Junio 2025</span>
+ <!-- Noticias informativas -->
+<section class="container mx-auto my-10">
+  <h3 class="text-xl font-semibold mb-4">📰 Noticias Informativas</h3>
+  <div class="grid md:grid-cols-3 gap-6">
+
+    <!-- CARD 1 - Bienestar -->
+    <div class="bg-white p-4 rounded shadow">
+      <div class="relative">
+        <div class="carousel" id="carousel-1">
+          <img src="assets/img/bienestar 1.jpg" class="w-full h-48 object-cover rounded slide" />
+          <img src="assets/img/bienestar 2.jpg" class="w-full h-48 object-cover rounded slide hidden" />
+          <img src="assets/img/bienestar 3.jpg" class="w-full h-48 object-cover rounded slide hidden" />
+        </div>
+        <button class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-gray-800 text-white px-2 py-1 text-sm" onclick="prevSlide(1)">⬅️</button>
+        <button class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-gray-800 text-white px-2 py-1 text-sm" onclick="nextSlide(1)">➡️</button>
       </div>
-      <div class="bg-white p-4 rounded shadow">
-        <h4 class="font-bold text-lg">Capacitación sobre SST</h4>
-        <p class="text-sm text-gray-600">Más de 100 funcionarios participaron en la capacitación en prevención de riesgos laborales.</p>
-        <span class="text-xs text-gray-400">Publicado: 25 Mayo 2025</span>
-      </div>
-      <div class="bg-white p-4 rounded shadow">
-        <h4 class="font-bold text-lg">Simulacro de evacuación</h4>
-        <p class="text-sm text-gray-600">Realizamos un simulacro de evacuación exitoso en todas las sedes administrativas.</p>
-        <span class="text-xs text-gray-400">Publicado: 15 Mayo 2025</span>
-      </div>
+      <h4 class="font-bold text-lg mt-4">Jornadas de Bienestar Laboral</h4>
+      <p class="text-sm text-gray-600">Se han llevado a cabo diversas actividades de bienestar para los funcionarios, como campeonatos deportivos, pausas activas, jornadas de salud y espacios de integración.</p>
     </div>
-  </section>
+
+    <!-- CARD 2 - Capacitaciones -->
+    <div class="bg-white p-4 rounded shadow">
+      <div class="relative">
+        <div class="carousel" id="carousel-2">
+          <img src="assets/img/capacitacion 1.jpg" class="w-full h-48 object-cover rounded slide" />
+          <img src="assets/img/capacitacion 2.jpg" class="w-full h-48 object-cover rounded slide hidden" />
+          <img src="assets/img/capacitacion 3.jpg" class="w-full h-48 object-cover rounded slide hidden" />
+        </div>
+        <button class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-gray-800 text-white px-2 py-1 text-sm" onclick="prevSlide(2)">⬅️</button>
+        <button class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-gray-800 text-white px-2 py-1 text-sm" onclick="nextSlide(2)">➡️</button>
+      </div>
+      <h4 class="font-bold text-lg mt-4">Capacitaciones Institucionales</h4>
+      <p class="text-sm text-gray-600">Durante el año se han realizado múltiples capacitaciones dirigidas al fortalecimiento de competencias laborales y la prevención de riesgos en el entorno de trabajo.</p>
+    </div>
+
+    <!-- CARD 3 - Pausas activas -->
+    <div class="bg-white p-4 rounded shadow">
+      <div class="relative">
+        <div class="carousel" id="carousel-3">
+          <img src="assets/img/pausa 1.jpg" class="w-full h-48 object-cover rounded slide" />
+          <img src="assets/img/pausa 2.jpg" class="w-full h-48 object-cover rounded slide hidden" />
+          <img src="assets/img/pausa 3.jpg" class="w-full h-48 object-cover rounded slide hidden" />
+        </div>
+        <button class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-gray-800 text-white px-2 py-1 text-sm" onclick="prevSlide(3)">⬅️</button>
+        <button class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-gray-800 text-white px-2 py-1 text-sm" onclick="nextSlide(3)">➡️</button>
+      </div>
+      <h4 class="font-bold text-lg mt-4">Promoción de Pausas Activas</h4>
+      <p class="text-sm text-gray-600">Se han promovido pausas activas en las oficinas para mejorar el bienestar físico y mental de los funcionarios durante la jornada laboral.</p>
+    </div>
+
+  </div>
+</section>
+<script>
+  const slideIndexes = [0, 0, 0]; // una posición por carrusel
+
+  function showSlide(carouselId, index) {
+    const slides = document.querySelectorAll(`#carousel-${carouselId} .slide`);
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('hidden', i !== index);
+    });
+  }
+
+  function nextSlide(carouselId) {
+    const slides = document.querySelectorAll(`#carousel-${carouselId} .slide`);
+    slideIndexes[carouselId - 1] = (slideIndexes[carouselId - 1] + 1) % slides.length;
+    showSlide(carouselId, slideIndexes[carouselId - 1]);
+  }
+
+  function prevSlide(carouselId) {
+    const slides = document.querySelectorAll(`#carousel-${carouselId} .slide`);
+    slideIndexes[carouselId - 1] = (slideIndexes[carouselId - 1] - 1 + slides.length) % slides.length;
+    showSlide(carouselId, slideIndexes[carouselId - 1]);
+  }
+</script>
+
 
   
   <footer class="bg-blue-800 text-white text-center py-4 mt-10">
