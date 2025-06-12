@@ -5,13 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Reporte de Acoso SST</title>
   <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100 min-h-screen flex flex-col">
 
-  <!-- Navbar simple -->
+   <!-- Navbar -->
   <nav class="bg-blue-800 text-white p-4">
     <div class="container mx-auto flex justify-between items-center">
-      <h1 class="text-xl font-bold">SST Piedemonte</h1>
+      <h1 class="text-xl font-bold">SST Piendamó Tunía</h1>
       <a href="../index.html" class="hover:underline text-sm">Inicio</a>
     </div>
   </nav>
@@ -20,7 +21,11 @@
   <main class="container mx-auto p-6 flex-grow">
     <h2 class="text-3xl font-semibold mb-6 text-center">Reporte de Acoso</h2>
 
-    <form action="#" method="POST" enctype="multipart/form-data" class="bg-white p-6 rounded shadow-md max-w-3xl mx-auto">
+  <form 
+ id="reporteForm"
+    action="https://formsubmit.co/sistemas@piendamo-cauca.gov.co" 
+    method="POST"
+    class="bg-white p-6 rounded shadow-md max-w-3xl mx-auto">
 
       <!-- Nombre Completo -->
       <label for="nombre" class="block font-medium mb-1">Nombre Completo</label>
@@ -63,10 +68,6 @@
         <option value="otro">Otro</option>
       </select>
 
-      <!-- Evidencia -->
-      <label for="evidencia" class="block font-medium mb-1">Adjuntar Evidencia (foto, video, archivo)</label>
-      <input type="file" id="evidencia" name="evidencia" accept="image/*,video/*,application/pdf" 
-             class="mb-6" />
 
       <!-- Botón Enviar -->
       <button type="submit" class="w-full bg-blue-700 hover:bg-blue-800 text-white py-3 rounded font-semibold transition">
@@ -75,10 +76,67 @@
     </form>
   </main>
 
-  <!-- Footer simple -->
+<!-- Footer -->
   <footer class="bg-blue-800 text-white text-center p-4">
-    &copy; 2025 Alcaldía de Piendamó Tunía - SST Piedemonte
+    &copy; 2025 Alcaldía de Piendamó Tunía - SST 
   </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+document.getElementById('reporteAcosoForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  const submitBtn = this.querySelector('button[type="submit"]');
+  const originalText = submitBtn.textContent;
+
+  submitBtn.innerHTML = `
+    <svg class="animate-spin -ml-1 mr-2 h-5 w-5 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+      <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+    </svg>
+    Enviando...
+  `;
+  submitBtn.disabled = true;
+
+  try {
+    const response = await fetch(this.action, {
+      method: 'POST',
+      body: new FormData(this)
+    });
+
+    if (response.ok) {
+      await Swal.fire({
+        title: '¡Éxito!',
+        text: 'El reporte se ha enviado correctamente',
+        icon: 'success',
+        confirmButtonText: 'Aceptar',
+        background: '#FFFFFF',
+        iconColor: '#10B981',
+        confirmButtonColor: '#3B82F6',
+        timer: 3000,
+        timerProgressBar: true,
+        willClose: () => {
+          this.reset();
+        }
+      });
+    } else {
+      throw new Error('Error en el servidor');
+    }
+  } catch (error) {
+    await Swal.fire({
+      title: 'Error',
+      text: 'No se pudo enviar el reporte: ' + error.message,
+      icon: 'error',
+      iconColor: '#EF4444',
+      confirmButtonColor: '#3B82F6',
+      background: '#FEF2F2'
+    });
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = originalText;
+  }
+});
+</script>
 
 </body>
 </html>
