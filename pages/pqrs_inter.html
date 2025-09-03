@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quejas y Reclamos Internos</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+
+  <!-- Navbar -->
+  <nav class="bg-blue-800 text-white p-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-xl font-bold">SST Piendamó Tunía</h1>
+      <a href="../index.html" class="hover:underline text-sm">Inicio</a>
+    </div>
+  </nav>
+
+  <!-- Formulario -->
+  <main class="container mx-auto p-6 flex-grow">
+    <h2 class="text-3xl font-semibold mb-6 text-center">Reporte de Quejas o Reclamos</h2>
+
+    <form id="quejasForm"
+      action="https://formsubmit.co/alacaldiapiendamotuniasst@gmail.com"
+      method="POST"
+      class="bg-white p-6 rounded shadow-md max-w-3xl mx-auto">
+
+      <!-- Configuración de FormSubmit -->
+      <input type="hidden" name="_subject" value="Nuevo Reporte de Queja/Reclamo">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+
+      <!-- Tipo de Queja -->
+      <label class="block font-medium mb-2">¿Desea que su queja sea anónima?</label>
+      <div class="flex items-center gap-4 mb-6">
+        <label class="flex items-center gap-2">
+          <input type="radio" name="anonima" value="si" checked onclick="toggleDatos(false)">
+          Sí
+        </label>
+        <label class="flex items-center gap-2">
+          <input type="radio" name="anonima" value="no" onclick="toggleDatos(true)">
+          No
+        </label>
+      </div>
+
+      <!-- Datos Personales -->
+      <div id="datosPersonales" class="hidden">
+        <label for="nombre" class="block font-medium mb-1">Nombre Completo</label>
+        <input type="text" id="nombre" name="Nombre"
+          class="w-full p-3 border border-gray-300 rounded mb-4">
+
+        <label for="contacto" class="block font-medium mb-1">Número de Contacto</label>
+        <input type="text" id="contacto" name="Contacto"
+          class="w-full p-3 border border-gray-300 rounded mb-4">
+
+        <label for="correo" class="block font-medium mb-1">Correo Electrónico</label>
+        <input type="email" id="correo" name="Correo"
+          class="w-full p-3 border border-gray-300 rounded mb-6">
+      </div>
+
+    <!-- Dependencia -->
+<label for="dependencia" class="block font-medium mb-1">Dependencia</label>
+<select id="dependencia" name="Dependencia" required
+  class="w-full p-3 border border-gray-300 rounded mb-6">
+  <option value="" disabled selected>Seleccione una dependencia</option>
+  <option value="Despacho Municipal">Despacho Municipal</option>
+  <option value="Control Interno">Control Interno</option>
+  <option value="Sistemas de Información y Comunicaciones">Sistemas de Información y Comunicaciones</option>
+  <option value="Secretaría de Gobierno">Secretaría de Gobierno</option>
+  <option value="Secretaría General">Secretaría General</option>
+  <option value="Secretaría de Planeación">Secretaría de Planeación</option>
+  <option value="Dirección Local de Salud">Dirección Local de Salud</option>
+  <option value="Rentas o Recaudo">Rentas o Recaudo</option>
+  <option value="Secretaría de Movilidad, Tránsito y Transporte">Secretaría de Movilidad, Tránsito y Transporte</option>
+  <option value="Secretaría de Hacienda">Secretaría de Hacienda</option>
+  <option value="Tesorería Municipal">Tesorería Municipal</option>
+  <option value="Concejo Municipal">Concejo Municipal</option>
+  <option value="Secretaría de Desarrollo Agropecuario">Secretaría de Desarrollo Agropecuario</option>
+  <option value="Archivo Municipal">Archivo Municipal</option>
+  <option value="Almacén Municipal">Almacén Municipal</option>
+  <option value="Comisaría de Familia">Comisaría de Familia</option>
+  <option value="Bibliotecas y Cultura">Bibliotecas y Cultura</option>
+  <option value="Inspección de Policía">Inspección de Policía</option>
+  <option value="Inspección Rural">Inspección Rural</option>
+  <option value="Prosperidad Social (Renta y Colombia Mayor)">Prosperidad Social (Renta y Colombia Mayor)</option>
+  <option value="Personería Municipal">Personería Municipal</option>
+  <option value="Sisbén y Víctimas">Sisbén y Víctimas</option>
+</select>
+
+
+      <!-- Mensaje -->
+      <label for="mensaje" class="block font-medium mb-1">Mensaje</label>
+      <textarea id="mensaje" name="Mensaje" rows="5" required
+        placeholder="Escriba su queja o reclamo con detalles"
+        class="w-full p-3 border border-gray-300 rounded mb-6"></textarea>
+
+      <!-- Botón -->
+      <button type="submit"
+        class="w-full bg-blue-700 hover:bg-blue-800 text-white py-3 rounded font-semibold transition">
+        Enviar Queja/Reclamo
+      </button>
+    </form>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-blue-800 text-white text-center p-4">
+    &copy; 2025 Alcaldía de Piendamó Tunía - SST
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    function toggleDatos(show) {
+      document.getElementById('datosPersonales').classList.toggle('hidden', !show);
+    }
+
+    document.getElementById('quejasForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const submitBtn = this.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
+
+      submitBtn.innerHTML = `
+        <svg class="animate-spin -ml-1 mr-2 h-5 w-5 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        Enviando...
+      `;
+      submitBtn.disabled = true;
+
+      try {
+        const response = await fetch(this.action, {
+          method: 'POST',
+          body: new FormData(this)
+        });
+
+        if (response.ok) {
+          await Swal.fire({
+            title: '¡Éxito!',
+            text: 'Su queja/reclamo ha sido enviado correctamente',
+            icon: 'success',
+            confirmButtonText: 'Aceptar',
+            iconColor: '#10B981',
+            confirmButtonColor: '#3B82F6',
+            timer: 3000,
+            timerProgressBar: true,
+            willClose: () => { this.reset(); toggleDatos(false); }
+          });
+        } else {
+          throw new Error('Error en el servidor');
+        }
+      } catch (error) {
+        await Swal.fire({
+          title: 'Error',
+          text: 'No se pudo enviar el reporte: ' + error.message,
+          icon: 'error',
+          iconColor: '#EF4444',
+          confirmButtonColor: '#3B82F6',
+          background: '#FEF2F2'
+        });
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+      }
+    });
+  </script>
+</body>
+</html>
