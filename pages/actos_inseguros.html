@@ -19,7 +19,11 @@
   <main class="container mx-auto p-6 flex-grow">
     <h2 class="text-3xl font-semibold mb-6 text-center">Reporte de Actos y Condiciones Inseguras</h2>
 
-    <form action="#" method="POST" enctype="multipart/form-data" class="bg-white p-6 rounded shadow-md max-w-4xl mx-auto">
+  <form 
+ id="reporteForm"
+    action="https://formsubmit.co/alcaldiapiendamotuniasst@gmail.com" 
+    method="POST"
+    class="bg-white p-6 rounded shadow-md max-w-3xl mx-auto">
 
       <!-- Fecha y hora -->
       <div class="grid md:grid-cols-2 gap-6 mb-4">
@@ -85,5 +89,70 @@
   <footer class="bg-blue-800 text-white text-center p-4">
     &copy; 2025 Alcaldía de Piendamó Tunía - SST 
   </footer>
+
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+document.getElementById('reporteForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  
+  const submitBtn = this.querySelector('button[type="submit"]');
+  const originalText = submitBtn.textContent;
+  
+  // Mostrar loader en el botón
+  submitBtn.innerHTML = `
+    <svg class="animate-spin -ml-1 mr-2 h-5 w-5 text-white inline-block" xmlns="http://www.w3.org/1000/svg" fill="none" viewBox="0 0 24 24">
+      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+      <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+    </svg>
+    Enviando...
+  `;
+  submitBtn.disabled = true;
+
+  try {
+    const response = await fetch(this.action, {
+      method: 'POST',
+      body: new FormData(this)
+    });
+
+    if (response.ok) {
+      await Swal.fire({
+        title: '¡Éxito!',
+        text: 'El reporte se ha enviado correctamente',
+        icon: 'success',
+        iconColor: '#10B981', // verde-500
+        confirmButtonColor: '#3B82F6', // azul-500
+        confirmButtonText: 'Aceptar',
+        background: '#FFFFFF',
+        backdrop: `
+          rgba(0,0,0,0.4)
+          url("/images/checkmark.gif")
+          center top
+          no-repeat
+        `,
+        timer: 3000,
+        timerProgressBar: true,
+        willClose: () => {
+          this.reset();
+        }
+      });
+    } else {
+      throw new Error('Error en el servidor');
+    }
+  } catch (error) {
+    await Swal.fire({
+      title: 'Error',
+      text: 'No se pudo enviar el reporte: ' + error.message,
+      icon: 'error',
+      iconColor: '#EF4444', // rojo-500
+      confirmButtonColor: '#3B82F6', // azul-500
+      confirmButtonText: 'Entendido',
+      background: '#FEF2F2' // rojo-50
+    });
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = originalText;
+  }
+});
+</script>
 </body>
 </html>
